@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NFFE Local 1650 | Los Padres National Forest</title>
-	<link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="/_sdk/element_sdk.js"></script>
     <style>
@@ -455,6 +455,18 @@
         }
 
         /* Stewards Section */
+	/* Make steward cards clickable links without changing appearance */
+	.steward-card-link {
+ 	 text-decoration: none;
+ 	 color: inherit;
+ 	 display: block;
+}
+
+	.steward-card-link:focus-visible {
+  	outline: 3px solid rgba(201,162,39,0.6);
+  	outline-offset: 6px;
+  	border-radius: 12px;
+}
         .stewards-intro {
             text-align: center;
             max-width: 700px;
@@ -465,7 +477,7 @@
 
         .stewards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
             gap: 20px;
         }
 
@@ -508,6 +520,20 @@
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
+/* Make View Profile button visible on white cards */
+.steward-card .btn-secondary {
+  background: var(--forest-green);
+  color: var(--white);
+  border: 2px solid var(--forest-green);
+  width: 100%;
+  text-align: center;
+}
+
+.steward-card .btn-secondary:hover {
+  background: var(--gold-accent);
+  border-color: var(--gold-accent);
+  color: var(--forest-dark);
+}
 
         .contact-info {
             display: flex;
@@ -884,7 +910,7 @@
     </div>
 
     <p style="text-align:center; margin-top: 18px; font-size: 0.95rem; color: var(--gray-text);">
-      Note: Shirt availibility is not guaranteed.
+      Tip: Include your preferred size and duty station so we can coordinate quickly.
     </p>
   </div>
 </section>
@@ -905,117 +931,104 @@
         </section>
 
         <!-- Stewards Section -->
-        <section id="stewards" class="section-alt">
-            <div class="section-container">
-                <div class="section-header">
-                    <h3>Steward Contacts</h3>
-                </div>
-                <p class="stewards-intro">Local 1650 maintains district-level steward support to ensure forest-wide representation.</p>
-                
-                <!-- All Stewards in Grid -->
-                <div class="stewards-grid">
-                    <div class="steward-card">
-                        <span class="steward-label">Chief Steward</span>
-                        <h4>Ella Schultz</h4>
-                        <p class="location">Santa Barbara</p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <a href="tel:5303918119">(530) 391-8119</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>✉️</span>
-                                <a href="mailto:Ella.schultz@usda.gov">Ella.schultz@usda.gov</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>📧</span>
-                                <a href="mailto:ella.schultz.nffe@gmail.com">ella.schultz.nffe@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="steward-card">
-                        <span class="steward-label">Steward</span>
-                        <h4>Mike Alba</h4>
-                        <p class="location">Mt. Pinos</p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <a href="tel:6612109053">(661) 210-9053</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>✉️</span>
-                                <a href="mailto:Michael.alba@usda.gov">Michael.alba@usda.gov</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="steward-card">
-                        <span class="steward-label">Steward</span>
-                        <h4>Rudy Piña</h4>
-                        <p class="location">Santa Barbara</p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <a href="tel:8057976892">(805) 797-6892</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>✉️</span>
-                                <a href="mailto:Armando.pina@usda.gov">Armando.pina@usda.gov</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="steward-card">
-                        <span class="steward-label">Steward</span>
-                        <h4>Dago Ojeda</h4>
-                        <p class="location">Ojai</p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <a href="tel:8056669092">(805) 666-9092</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>✉️</span>
-                                <a href="mailto:Dagoberto.ojeda@usda.gov">Dagoberto.ojeda@usda.gov</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="steward-card">
-                        <span class="steward-label">Steward</span>
-                        <h4>Maria Rosario</h4>
-                        <p class="location">Communicator</p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <a href="tel:8057676663">(805) 767-6663</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>✉️</span>
-                                <a href="mailto:Maria.rosario@usda.gov">Maria.rosario@usda.gov</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>📧</span>
-                                <a href="mailto:unioncomms1650@gmail.com">unioncomms1650@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="steward-card">
-                        <span class="steward-label">Steward</span>
-                        <h4>Jax Clague</h4>
-                        <p class="location">Monterey</p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <a href="tel:8318375160">(831) 837-5160</a>
-                            </div>
-                            <div class="contact-item">
-                                <span>✉️</span>
-                                <a href="mailto:Jax.Clague@usda.gov">Jax.Clague@usda.gov</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Stewards Section -->
+<section id="stewards" class="section-alt">
+  <div class="section-container">
+    <div class="section-header">
+      <h3>Steward Contacts</h3>
+    </div>
+    <p class="stewards-intro">
+      Local 1650 maintains district-level steward support to ensure forest-wide representation.
+    </p>
 
+    <div class="stewards-grid">
+
+      <!-- Ella -->
+      <div class="steward-card">
+        <span class="steward-label">Chief Steward</span>
+        <h4>Ella Schultz</h4>
+        <p class="location">Los Padres National Forest</p>
+
+        <div class="contact-info">
+          <div class="contact-item"><span>📞</span><a href="tel:5303918119">(530) 391-8119</a></div>
+
+          <div class="contact-item"><span>✉️</span><a href="mailto:Ella.schultz@usda.gov">Ella.schultz@usda.gov</a></div>
+          <div class="contact-item"><span>📧</span><a href="mailto:ella.schultz.nffe@gmail.com">ella.schultz.nffe@gmail.com</a></div>
+        </div>
+
+ <div style="margin-top:16px;">
+          <a class="btn btn-secondary" href="ella.html">View Profile →</a>
+        </div>
+      </div>
+
+    <!-- Maria -->
+      <div class="steward-card">
+        <span class="steward-label">Steward</span>
+        <h4>Maria Rosario</h4>
+        <p class="location">Communicator</p>
+
+        <div class="contact-info">
+          <div class="contact-item"><span>📞</span><a href="tel:8057676663">(805) 767-6663</a></div>
+          <div class="contact-item"><span>✉️</span><a href="mailto:Maria.rosario@usda.gov">Maria.rosario@usda.gov</a></div>
+          <div class="contact-item"><span>📧</span><a href="mailto:unioncomms1650@gmail.com">unioncomms1650@gmail.com</a></div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a class="btn btn-secondary" href="maria.html">View Profile →</a>
+        </div>
+      </div>
+
+      <!-- Mike -->
+      <div class="steward-card">
+        <span class="steward-label">Steward</span>
+        <h4>Mike Alba</h4>
+        <p class="location">Mt. Pinos Ranger District</p>
+
+        <div class="contact-info">
+          <div class="contact-item"><span>📞</span><a href="tel:6612109053">(661) 210-9053</a></div>
+          <div class="contact-item"><span>✉️</span><a href="mailto:Michael.alba@usda.gov">Michael.alba@usda.gov</a></div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a class="btn btn-secondary" href="mike.html">View Profile →</a>
+        </div>
+      </div>
+
+      <!-- Dago -->
+      <div class="steward-card">
+        <span class="steward-label">Steward</span>
+        <h4>Dago Ojeda</h4>
+        <p class="location">Ojai Ranger District</p>
+
+        <div class="contact-info">
+          <div class="contact-item"><span>📞</span><a href="tel:8056669092">(805) 666-9092</a></div>
+          <div class="contact-item"><span>✉️</span><a href="mailto:Dagoberto.ojeda@usda.gov">Dagoberto.ojeda@usda.gov</a></div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a class="btn btn-secondary" href="dago.html">View Profile →</a>
+        </div>
+      </div>
+
+      <!-- Jax -->
+      <div class="steward-card">
+        <span class="steward-label">Steward</span>
+        <h4>Jax Clague</h4>
+        <p class="location">Monterey Ranger District</p>
+
+        <div class="contact-info">
+          <div class="contact-item"><span>📞</span><a href="tel:8318375160">(831) 837-5160</a></div>
+          <div class="contact-item"><span>✉️</span><a href="mailto:Jax.Clague@usda.gov">Jax.Clague@usda.gov</a></div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a class="btn btn-secondary" href="jax.html">View Profile →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
         <!-- Footer -->
         <footer>
             <div class="footer-container">
