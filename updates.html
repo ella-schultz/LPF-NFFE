@@ -302,103 +302,126 @@
             margin-bottom: 24px;
         }
 
+        /* Reached-only timeline: completed milestones plus the current milestone. */
         .tracker {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 10px 18px;
-            margin: 28px 0;
-            align-items: stretch;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            margin: 28px 0 22px;
         }
 
-        .tracker.tracker-count-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .tracker.tracker-count-6 {
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-        }
-
-        .tracker-step {
+        .timeline-step {
             position: relative;
-            min-width: 0;
-            min-height: 62px;
-            height: 100%;
-            background: linear-gradient(180deg, #ffffff 0%, var(--off-white) 100%);
-            border: 1px solid #d8dee4;
-            color: #66707a;
-            border-radius: 8px 0 0 8px;
-            padding: 13px 18px 12px 16px;
+            display: flex;
+            flex: 1 1 0;
+            flex-direction: column;
+            align-items: center;
+            max-width: 190px;
+            min-width: 100px;
+            padding: 0 10px;
             text-align: center;
-            font-size: 0.82rem;
-            font-weight: 800;
-            line-height: 1.25;
-            letter-spacing: 0.01em;
-            box-shadow: 0 2px 6px rgba(15, 45, 26, 0.06);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .tracker-step::after {
+        .timeline-step::after {
             content: '';
             position: absolute;
-            top: 50%;
-            right: -14px;
-            width: 28px;
-            height: 28px;
-            background: inherit;
-            border-top: 1px solid #d8dee4;
-            border-right: 1px solid #d8dee4;
-            transform: translateY(-50%) rotate(45deg);
-            z-index: 2;
+            z-index: 0;
+            top: 14px;
+            left: calc(50% + 15px);
+            right: calc(-50% + 15px);
+            height: 1px;
+            background: #d7ded9;
         }
 
-        .tracker-step:last-child {
-            border-radius: 8px;
-            padding-right: 16px;
-        }
-
-        .tracker-step:last-child::after {
+        .timeline-step:last-child::after {
             display: none;
         }
 
-        .tracker-step.is-complete {
-            background: linear-gradient(135deg, var(--forest-dark), var(--forest-green));
-            border-color: var(--forest-dark);
-            color: var(--white);
-            box-shadow: 0 7px 16px rgba(15, 45, 26, 0.18);
+        .timeline-marker {
+            position: relative;
+            z-index: 1;
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            flex: 0 0 30px;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #b8c2bb;
+            border-radius: 50%;
+            background: var(--white);
+            color: #68736c;
+            font-size: 0.78rem;
+            font-weight: 800;
         }
 
-        .tracker-step.is-complete::after {
-            border-color: rgba(255, 255, 255, 0.18);
+        .timeline-content {
+            min-width: 0;
+            padding-top: 9px;
         }
 
-        .tracker-step.status-approved,
-        .tracker-step.status-denied,
-        .tracker-step.status-failed,
-        .tracker-step.status-partial,
-        .tracker-step.status-open {
-            background: linear-gradient(135deg, var(--forest-dark), var(--forest-green));
-            border-color: var(--forest-dark);
-            color: var(--white);
+        .timeline-label,
+        .timeline-status {
+            display: block;
         }
 
-        .tracker-step.status-approved::after,
-        .tracker-step.status-denied::after,
-        .tracker-step.status-failed::after,
-        .tracker-step.status-partial::after,
-        .tracker-step.status-open::after {
-            border-color: rgba(255, 255, 255, 0.18);
-        }
-
-        .update-details {
-            display: grid;
-            gap: 8px;
-            background: var(--off-white);
-            border-radius: 8px;
-            padding: 18px;
-        }
-
-        .update-details strong {
+        .timeline-label {
             color: var(--forest-dark);
+            font-weight: 800;
+            font-size: 0.88rem;
+            line-height: 1.25;
+        }
+
+        .timeline-status {
+            margin-top: 3px;
+            color: #68736c;
+            font-size: 0.76rem;
+            line-height: 1.3;
+        }
+
+        .timeline-step.is-completed .timeline-marker {
+            border-color: var(--forest-green);
+            background: var(--forest-green);
+            color: var(--white);
+        }
+
+        .timeline-step.is-completed::after {
+            background: var(--forest-green);
+        }
+
+        .timeline-step.is-current .timeline-marker {
+            border: 4px solid var(--gold-accent);
+            background: var(--forest-dark);
+            color: var(--white);
+            box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.16);
+        }
+
+        .public-status-note {
+            margin: 0;
+            padding: 16px 0;
+            border-top: 1px solid var(--gray-light);
+            color: #39443d;
+            line-height: 1.55;
+        }
+
+        .public-status-note strong {
+            color: var(--forest-dark);
+        }
+
+        .update-metadata {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-light);
+            color: #68736c;
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }
+
+        .metadata-separator {
+            color: #9aa39d;
         }
 
         .sr-only {
@@ -548,36 +571,6 @@
                 margin-top: 14px;
             }
 
-            .tracker,
-            .tracker.tracker-count-4,
-            .tracker.tracker-count-6 {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-
-            .tracker-step {
-                min-width: 0;
-                min-height: 48px;
-                border-radius: 8px;
-                padding: 13px 14px;
-                text-align: center;
-            }
-
-            .tracker-step::after {
-                top: auto;
-                right: auto;
-                bottom: -12px;
-                left: 50%;
-                width: 20px;
-                height: 20px;
-                transform: translateX(-50%) rotate(135deg);
-            }
-
-            .tracker-step:last-child::after {
-                display: none;
-            }
-
             .footer-main {
                 text-align: center;
             }
@@ -589,6 +582,38 @@
             .footer-bottom {
                 justify-content: center;
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tracker {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .timeline-step {
+                display: grid;
+                grid-template-columns: 34px minmax(0, 1fr);
+                align-items: start;
+                width: 100%;
+                max-width: none;
+                min-height: 68px;
+                padding: 0 0 20px;
+                text-align: left;
+            }
+
+            .timeline-step::after {
+                top: 30px;
+                bottom: 0;
+                left: 14px;
+                right: auto;
+                width: 1px;
+                height: auto;
+            }
+
+            .timeline-content {
+                padding: 3px 0 0 8px;
             }
         }
 
@@ -719,19 +744,55 @@
         const updatesStatus = document.getElementById("updates-status");
         const updatesList = document.getElementById("updates-list");
 
-        /* Standard grievance path. Approved responses use a shorter settlement path. */
-        const stageDefinitions = [
-            { key: "step1_filed", label: "Step 1 Filed" },
-            { key: "step1_response", label: "Step 1 Response" },
-            { key: "step2_filed", label: "Step 2 Filed" },
-            { key: "step2_response", label: "Step 2 Response" },
-            { key: "arb_vote", label: "Arbitration Vote" },
-            { key: "arb_scheduled", label: "Arbitration Scheduled" },
-            { key: "decision_pending", label: "Decision Pending" },
-            { key: "final_closed", label: "Final / Closed" }
-        ];
+        /*
+         * BRANCHING WORKFLOW STATE MACHINE
+         * workflow_state stores one exact state from this list.
+         * completed_states stores earlier state codes separated by | characters.
+         */
+        const milestoneOrder = ["step1", "step2", "arbitration_vote", "arbitration", "appeal", "settlement"];
 
-        const settlementStage = { key: "settlement", label: "Settlement" };
+        const milestoneLabels = {
+            step1: "Step 1",
+            step2: "Step 2",
+            arbitration_vote: "Arb. Vote",
+            arbitration: "Arbitration",
+            appeal: "Appeal",
+            settlement: "Settlement"
+        };
+
+        const workflowStates = {
+            step1_filed: { milestone: "step1", status: "Filed", tone: "pending" },
+            step1_response_pending: { milestone: "step1", status: "Response pending", tone: "pending" },
+            step1_partial_response: { milestone: "step1", status: "Partial response", tone: "pending" },
+            step1_approved: { milestone: "step1", status: "Approved", tone: "positive" },
+            step1_denied: { milestone: "step1", status: "Denied", tone: "negative" },
+
+            step2_filed: { milestone: "step2", status: "Filed", tone: "pending" },
+            step2_response_pending: { milestone: "step2", status: "Response pending", tone: "pending" },
+            step2_partial_response: { milestone: "step2", status: "Partial response", tone: "pending" },
+            step2_approved: { milestone: "step2", status: "Approved", tone: "positive" },
+            step2_denied: { milestone: "step2", status: "Denied", tone: "negative" },
+
+            arbitration_vote_pending: { milestone: "arbitration_vote", status: "Vote pending", tone: "pending" },
+            arbitration_vote_approved: { milestone: "arbitration_vote", status: "Vote approved", tone: "positive" },
+            arbitration_vote_denied: { milestone: "arbitration_vote", status: "Vote denied", tone: "negative" },
+
+            arbitration_scheduling: { milestone: "arbitration", status: "Scheduling available", tone: "pending" },
+            arbitration_scheduled: { milestone: "arbitration", status: "Scheduled", tone: "pending" },
+            arbitration_decision_pending: { milestone: "arbitration", status: "Decision pending", tone: "pending" },
+            arbitration_approved: { milestone: "arbitration", status: "Result approved", tone: "positive" },
+            arbitration_denied: { milestone: "arbitration", status: "Result denied", tone: "negative" },
+
+            appeal_filed: { milestone: "appeal", status: "Filed", tone: "pending" },
+            appeal_pending: { milestone: "appeal", status: "Pending", tone: "pending" },
+            appeal_decision_pending: { milestone: "appeal", status: "Decision pending", tone: "pending" },
+            appeal_approved: { milestone: "appeal", status: "Approved", tone: "positive" },
+            appeal_denied: { milestone: "appeal", status: "Denied", tone: "negative" },
+
+            settlement_pending: { milestone: "settlement", status: "Settlement pending", tone: "pending" },
+            settled: { milestone: "settlement", status: "Settled", tone: "positive" },
+            closed: { milestone: "closed", status: "Closed", tone: "positive" }
+        };
 
         /* Small text helpers keep blank and mixed-case sheet values predictable. */
         function normalize(value) {
@@ -740,11 +801,6 @@
 
         function lower(value) {
             return normalize(value).toLowerCase();
-        }
-
-        function hasValue(value) {
-            const normalized = lower(value);
-            return normalized !== "" && normalized !== "pending" && normalized !== "not pending" && normalized !== "not started" && normalized !== "n/a";
         }
 
         function isApproved(value) {
@@ -759,6 +815,11 @@
             return lower(value).includes("partial");
         }
 
+        function isPending(value) {
+            const normalized = lower(value);
+            return normalized === "" || normalized === "pending" || normalized === "not pending" || normalized === "not started" || normalized === "n/a";
+        }
+
         function isFinalOutcome(value) {
             const normalized = lower(value);
             return normalized !== "" && normalized !== "pending" && normalized !== "not pending" && normalized !== "not started";
@@ -769,7 +830,8 @@
             if (!raw) return "";
             const date = new Date(raw + "T00:00:00");
             if (Number.isNaN(date.getTime())) return raw;
-            return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+            const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+            return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
         }
 
         function escapeHtml(value) {
@@ -781,124 +843,261 @@
                 .replace(/'/g, "&#039;");
         }
 
-        function stageIndexFromCurrentStage(currentStage) {
-            const stage = lower(currentStage);
-            if (stage.includes("final") || stage.includes("closed")) return 7;
-            if (stage.includes("decision")) return 6;
-            if (stage.includes("arbitration scheduled")) return 5;
-            if (stage.includes("vote") || stage.includes("arbitration vote")) return 4;
-            if (stage.includes("step 2 response")) return 3;
-            if (stage.includes("step 2 filed")) return 2;
-            if (stage.includes("step 1 response")) return 1;
-            if (stage.includes("step 1 filed")) return 0;
-            return -1;
+        const stateAliases = {
+            "step_1_filed": "step1_filed",
+            "step_1_response": "step1_response_pending",
+            "step_1_response_pending": "step1_response_pending",
+            "step_1_approved": "step1_approved",
+            "step_1_denied": "step1_denied",
+            "step_2_filed": "step2_filed",
+            "step_2_response": "step2_response_pending",
+            "step_2_response_pending": "step2_response_pending",
+            "step_2_approved": "step2_approved",
+            "step_2_denied": "step2_denied",
+            "arbitration_vote": "arbitration_vote_pending",
+            "vote_open": "arbitration_vote_pending",
+            "vote_pending": "arbitration_vote_pending",
+            "vote_passed": "arbitration_vote_approved",
+            "vote_approved": "arbitration_vote_approved",
+            "vote_failed": "arbitration_vote_denied",
+            "vote_denied": "arbitration_vote_denied",
+            "arbitration_scheduled": "arbitration_scheduled",
+            "arbitration_decision_pending": "arbitration_decision_pending",
+            "decision_pending": "arbitration_decision_pending",
+            "appeal_filed": "appeal_filed",
+            "appeal_pending": "appeal_pending",
+            "appeal_decision": "appeal_decision_pending",
+            "appeal_decision_pending": "appeal_decision_pending",
+            "settlement": "settlement_pending",
+            "settled": "settled",
+            "final_closed": "closed",
+            "closed": "closed"
+        };
+
+        function normalizeStateCode(value) {
+            const raw = normalize(value);
+            if (!raw) return "";
+            if (workflowStates[raw]) return raw;
+
+            const normalized = raw
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "_")
+                .replace(/^_+|_+$/g, "");
+
+            if (workflowStates[normalized]) return normalized;
+            return stateAliases[normalized] || "";
         }
 
-        function hasApprovedResponse(item) {
-            return isApproved(item.step1_outcome) || isApproved(item.step2_outcome);
+        function parseCompletedStates(value) {
+            const values = Array.isArray(value)
+                ? value
+                : normalize(value).split(/[|,;]+/);
+            const seen = new Set();
+
+            return values
+                .map(normalizeStateCode)
+                .filter(function(state) {
+                    if (!state || seen.has(state)) return false;
+                    seen.add(state);
+                    return true;
+                });
         }
 
-        function getTrackerStages(item) {
-            const step1Filed = stageDefinitions[0];
-            const step1Response = stageDefinitions[1];
-            const step2Filed = stageDefinitions[2];
-            const step2Response = stageDefinitions[3];
-            const finalClosed = stageDefinitions[7];
-
-            if (isApproved(item.step2_outcome)) {
-                return [step1Filed, step1Response, step2Filed, step2Response, settlementStage, finalClosed];
+        function addCompletedState(history, state) {
+            if (state && workflowStates[state] && !history.includes(state)) {
+                history.push(state);
             }
-
-            if (isApproved(item.step1_outcome)) {
-                return [step1Filed, step1Response, settlementStage, finalClosed];
-            }
-
-            return stageDefinitions;
         }
 
-        function getProgressIndex(item) {
-            let progressIndex = stageIndexFromCurrentStage(item.current_stage);
+        /* Temporary adapter for the currently deployed legacy sheet. */
+        function getLegacyWorkflow(item) {
+            const stage = lower(item.current_stage);
+            const history = [];
+            let currentState = "";
 
-            if (hasValue(item.step1_outcome)) progressIndex = Math.max(progressIndex, 1);
-            if (lower(item.current_stage).includes("step 2") || hasValue(item.step2_outcome)) progressIndex = Math.max(progressIndex, 2);
-            if (hasValue(item.step2_outcome)) progressIndex = Math.max(progressIndex, 3);
-            if (hasValue(item.arb_vote)) progressIndex = Math.max(progressIndex, 4);
-            if (normalize(item.arb_date)) progressIndex = Math.max(progressIndex, 5);
-            if (lower(item.decision_status) === "pending") progressIndex = Math.max(progressIndex, 6);
-            if (isFinalOutcome(item.final_outcome)) progressIndex = Math.max(progressIndex, 7);
+            if (stage.includes("appeal")) {
+                if (isApproved(item.appeal_outcome)) currentState = "appeal_approved";
+                else if (isDenied(item.appeal_outcome)) currentState = "appeal_denied";
+                else if (stage.includes("decision")) currentState = "appeal_decision_pending";
+                else if (stage.includes("filed")) currentState = "appeal_filed";
+                else currentState = "appeal_pending";
+            } else if (stage.includes("final") || stage.includes("closed")) {
+                currentState = "closed";
+            } else if (isApproved(item.arbitration_result)) {
+                currentState = "arbitration_approved";
+            } else if (isDenied(item.arbitration_result)) {
+                currentState = "arbitration_denied";
+            } else if ((stage.includes("arbitration") && stage.includes("decision")) || lower(item.decision_status) === "pending") {
+                currentState = "arbitration_decision_pending";
+            } else if (normalize(item.arbitration_date || item.arb_date) || stage.includes("arbitration scheduled")) {
+                currentState = "arbitration_scheduled";
+            } else if (lower(item.arb_vote).includes("passed") || lower(item.arb_vote).includes("approved")) {
+                currentState = "arbitration_vote_approved";
+            } else if (lower(item.arb_vote).includes("failed") || lower(item.arb_vote).includes("denied")) {
+                currentState = "arbitration_vote_denied";
+            } else if (stage.includes("vote") || lower(item.arb_vote).includes("open")) {
+                currentState = "arbitration_vote_pending";
+            } else if (isApproved(item.step2_outcome)) {
+                currentState = "step2_approved";
+            } else if (isDenied(item.step2_outcome)) {
+                currentState = "step2_denied";
+            } else if (isPartial(item.step2_outcome)) {
+                currentState = "step2_partial_response";
+            } else if (stage.includes("step 2 response")) {
+                currentState = "step2_response_pending";
+            } else if (stage.includes("step 2 filed")) {
+                currentState = isPending(item.step2_outcome) ? "step2_response_pending" : "step2_filed";
+            } else if (isApproved(item.step1_outcome)) {
+                currentState = "step1_approved";
+            } else if (isDenied(item.step1_outcome)) {
+                currentState = "step1_denied";
+            } else if (isPartial(item.step1_outcome)) {
+                currentState = "step1_partial_response";
+            } else if (stage.includes("step 1 response")) {
+                currentState = "step1_response_pending";
+            } else {
+                currentState = "step1_filed";
+            }
 
-            return progressIndex;
+            const currentMilestone = workflowStates[currentState] ? workflowStates[currentState].milestone : "";
+            const currentMilestoneIndex = milestoneOrder.indexOf(currentMilestone);
+
+            if (currentMilestoneIndex >= milestoneOrder.indexOf("step2")) {
+                addCompletedState(history, "step1_filed");
+                addCompletedState(history, isApproved(item.step1_outcome) ? "step1_approved" : "step1_denied");
+            }
+            if (currentMilestoneIndex >= milestoneOrder.indexOf("arbitration_vote")) {
+                addCompletedState(history, "step2_filed");
+                addCompletedState(history, isApproved(item.step2_outcome) ? "step2_approved" : "step2_denied");
+            }
+            if (currentMilestoneIndex >= milestoneOrder.indexOf("arbitration")) {
+                addCompletedState(history, "arbitration_vote_approved");
+            }
+            if (currentMilestoneIndex >= milestoneOrder.indexOf("appeal")) {
+                addCompletedState(history, "arbitration_denied");
+            }
+
+            if (isApproved(item.step1_outcome)) addCompletedState(history, "step1_approved");
+            if (isDenied(item.step1_outcome)) addCompletedState(history, "step1_denied");
+            if (isApproved(item.step2_outcome)) addCompletedState(history, "step2_approved");
+            if (isDenied(item.step2_outcome)) addCompletedState(history, "step2_denied");
+            if (normalize(item.arbitration_date || item.arb_date) && currentState !== "arbitration_scheduled") addCompletedState(history, "arbitration_scheduled");
+            if (isFinalOutcome(item.final_outcome) && lower(item.final_outcome).includes("sett")) addCompletedState(history, "settled");
+
+            return { currentState: currentState, completedStates: history.filter(state => state !== currentState), source: "legacy" };
         }
 
-        function isStageComplete(item, stage, index, progressIndex) {
-            if (hasApprovedResponse(item)) return true;
-            return index <= progressIndex;
+        function getWorkflow(item) {
+            const rawWorkflowState = normalize(item.workflow_state);
+            const requestedState = normalizeStateCode(rawWorkflowState);
+            if (!rawWorkflowState) return getLegacyWorkflow(item);
+
+            if (!requestedState) {
+                return {
+                    currentState: "",
+                    completedStates: parseCompletedStates(item.completed_states),
+                    source: "invalid-state"
+                };
+            }
+
+            return {
+                currentState: requestedState,
+                completedStates: parseCompletedStates(item.completed_states).filter(state => state !== requestedState),
+                source: "state-machine"
+            };
         }
 
-        function getStageDisplay(item, stage) {
-            const display = { label: stage.label, modifier: "" };
+        /* Historical arbitration labels must describe what happened, not an old scheduled date. */
+        function getMilestoneStatus(item, state, definition, isCurrent) {
+            if (definition.milestone !== "arbitration") return definition.status;
 
-            if (stage.key === "step1_response" && hasValue(item.step1_outcome)) {
-                if (isDenied(item.step1_outcome)) return { label: "Step 1 Denied", modifier: "status-denied" };
-                if (isApproved(item.step1_outcome)) return { label: "Step 1 Approved", modifier: "status-approved" };
-                if (isPartial(item.step1_outcome)) return { label: "Partial Response", modifier: "status-partial" };
-                return { label: normalize(item.step1_outcome), modifier: "" };
+            const storedResult = normalize(item.arbitration_result);
+            const hasActualResult = storedResult && !isPending(storedResult) && !lower(storedResult).includes("schedul");
+            if (hasActualResult && (!isCurrent || state === "arbitration_approved" || state === "arbitration_denied")) {
+                return storedResult;
             }
 
-            if (stage.key === "step2_response" && hasValue(item.step2_outcome)) {
-                if (isDenied(item.step2_outcome)) return { label: "Step 2 Denied", modifier: "status-denied" };
-                if (isApproved(item.step2_outcome)) return { label: "Step 2 Approved", modifier: "status-approved" };
-                if (isPartial(item.step2_outcome)) return { label: "Partial Response", modifier: "status-partial" };
-                return { label: normalize(item.step2_outcome), modifier: "" };
+            if (isCurrent) return definition.status;
+
+            if (state === "arbitration_approved" || state === "arbitration_denied") {
+                return definition.status;
             }
 
-            if (stage.key === "arb_vote" && hasValue(item.arb_vote)) {
-                const vote = lower(item.arb_vote);
-                if (vote.includes("failed")) return { label: "Vote Failed", modifier: "status-failed" };
-                if (vote.includes("passed")) return { label: "Vote Passed", modifier: "status-approved" };
-                if (vote.includes("open")) return { label: "Vote Open", modifier: "status-open" };
-                return { label: normalize(item.arb_vote), modifier: "" };
+            return "Completed";
+        }
+
+        function getTimelineEntries(item) {
+            const workflow = getWorkflow(item);
+            const currentDefinition = workflowStates[workflow.currentState];
+
+            if (!currentDefinition) {
+                return [{
+                    milestone: "status",
+                    label: "Status",
+                    status: normalize(item.workflow_state || item.current_stage) || "Pending",
+                    tone: "pending",
+                    position: "current"
+                }];
             }
 
-            if (stage.key === "settlement" && hasApprovedResponse(item)) {
-                return { label: "Settlement", modifier: "status-approved" };
+            const milestoneHistory = new Map();
+            workflow.completedStates.forEach(function(state) {
+                const definition = workflowStates[state];
+                if (definition && milestoneLabels[definition.milestone]) {
+                    milestoneHistory.set(definition.milestone, { state: state, definition: definition });
+                }
+            });
+
+            const isClosed = workflow.currentState === "closed";
+            if (!isClosed && milestoneLabels[currentDefinition.milestone]) {
+                milestoneHistory.set(currentDefinition.milestone, {
+                    state: workflow.currentState,
+                    definition: currentDefinition
+                });
             }
 
-            if (stage.key === "final_closed" && hasApprovedResponse(item)) {
-                return { label: isFinalOutcome(item.final_outcome) ? normalize(item.final_outcome) : "Final / Closed", modifier: "status-approved" };
-            }
-
-            if (stage.key === "final_closed" && isFinalOutcome(item.final_outcome)) {
-                return { label: normalize(item.final_outcome), modifier: isDenied(item.final_outcome) ? "status-denied" : "status-approved" };
-            }
-
-            return display;
+            return milestoneOrder
+                .filter(milestone => milestoneHistory.has(milestone))
+                .map(function(milestone) {
+                    const historyEntry = milestoneHistory.get(milestone);
+                    const isCurrent = !isClosed && milestone === currentDefinition.milestone;
+                    return {
+                        milestone: milestone,
+                        label: milestoneLabels[milestone],
+                        status: getMilestoneStatus(item, historyEntry.state, historyEntry.definition, isCurrent),
+                        position: isCurrent ? "current" : "completed"
+                    };
+                });
         }
 
         function getStatusBadge(item) {
-            if (isFinalOutcome(item.final_outcome)) return normalize(item.final_outcome);
-            if (hasApprovedResponse(item)) return "Settlement / Closed";
-            if (lower(item.decision_status) === "pending") return "Decision Pending";
-            if (normalize(item.arb_date)) return "Arbitration Scheduled";
-            if (hasValue(item.arb_vote)) return getStageDisplay(item, { key: "arb_vote", label: "Arbitration Vote" }).label;
-            return normalize(item.current_stage) || "Status Pending";
+            const workflow = getWorkflow(item);
+            const definition = workflowStates[workflow.currentState];
+            if (!definition) return normalize(item.workflow_state || item.current_stage) || "Status pending";
+
+            if (workflow.currentState === "closed") return "Closed";
+            if (definition.milestone === "settlement") return workflow.currentState === "settled" ? "Resolved" : "Settlement";
+            if (definition.milestone === "appeal") return "In Appeal";
+            if (definition.milestone === "arbitration") return "In Arbitration";
+            if (definition.milestone === "arbitration_vote") return "Arbitration Vote";
+            return "Open";
         }
 
         function buildTracker(item) {
-            const trackerStages = getTrackerStages(item);
-            const progressIndex = getProgressIndex(item);
-            return trackerStages.map((stage, index) => {
-                const display = getStageDisplay(item, stage);
-                const isComplete = isStageComplete(item, stage, index, progressIndex);
-                const currentIndex = hasApprovedResponse(item)
-                    ? trackerStages.length - 1
-                    : Math.min(progressIndex, trackerStages.length - 1);
-                const isCurrent = isComplete && index === currentIndex;
-                const classes = ["tracker-step", isComplete ? "is-complete" : "", isComplete ? display.modifier : ""].filter(Boolean).join(" ");
-                const statusText = isCurrent ? "current stage" : isComplete ? "completed" : "not yet reached";
-                const ariaCurrent = isCurrent ? ' aria-current="step"' : "";
+            return getTimelineEntries(item).map(function(entry) {
+                const marker = entry.position === "completed" ? "✓" : "●";
+                const ariaCurrent = entry.position === "current" ? ' aria-current="step"' : "";
+                const accessiblePosition = entry.position === "current" ? "current" : "completed";
 
-                return `<div class="${classes}" role="listitem" aria-label="${escapeHtml(display.label)}: ${statusText}"${ariaCurrent}>${escapeHtml(display.label)}</div>`;
+                return `
+                    <div class="timeline-step is-${entry.position}" role="listitem" aria-label="${escapeHtml(entry.label)}: ${escapeHtml(entry.status)}; ${accessiblePosition}"${ariaCurrent}>
+                        <span class="timeline-marker" aria-hidden="true">${escapeHtml(marker)}</span>
+                        <span class="timeline-content">
+                            <span class="timeline-label">${escapeHtml(entry.label)}</span>
+                            <span class="timeline-status">${escapeHtml(entry.status)}</span>
+                        </span>
+                    </div>
+                `;
             }).join("");
         }
 
@@ -1002,9 +1201,8 @@
                 const grievanceId = normalize(item.grievance_id) || `Update ${index + 1}`;
                 const title = normalize(item.title) || "National grievance update";
                 const statusBadge = getStatusBadge(item);
-                const lastUpdated = formatDate(item.last_updated) || "Not posted";
-                const arbitrationDate = formatDate(item.arb_date);
-                const finalOutcome = isFinalOutcome(item.final_outcome) ? normalize(item.final_outcome) : "";
+                const lastUpdated = formatDate(item.last_updated);
+                const arbitrationDate = formatDate(item.arbitration_date || item.arb_date);
 
                 return `
                     <article class="update-card" aria-labelledby="update-title-${index}">
@@ -1016,15 +1214,14 @@
                             <span class="status-badge">${escapeHtml(statusBadge)}</span>
                         </div>
                         <p class="update-summary">${escapeHtml(item.summary || "No public summary is posted at this time.")}</p>
-                        <div class="tracker tracker-count-${getTrackerStages(item).length}" role="list" aria-label="Public grievance status tracker for ${escapeHtml(grievanceId)}">
+                        <div class="tracker" role="list" aria-label="Public grievance status tracker for ${escapeHtml(grievanceId)}">
                             ${buildTracker(item)}
                         </div>
                         <p class="sr-only">Current public status for ${escapeHtml(grievanceId)}: ${escapeHtml(statusBadge)}.</p>
-                        <div class="update-details">
-                            <p><strong>Public note:</strong> ${escapeHtml(item.public_note || "No public note is posted at this time.")}</p>
-                            <p><strong>Last updated:</strong> ${escapeHtml(lastUpdated)}</p>
-                            ${arbitrationDate ? `<p><strong>Arbitration date:</strong> ${escapeHtml(arbitrationDate)}</p>` : ""}
-                            ${finalOutcome ? `<p><strong>Final outcome:</strong> ${escapeHtml(finalOutcome)}</p>` : ""}
+                        <p class="public-status-note"><strong>Current status:</strong> ${escapeHtml(item.public_note || "No public note is posted at this time.")}</p>
+                        <div class="update-metadata" aria-label="Case dates">
+                            <span>${lastUpdated ? `Updated ${escapeHtml(lastUpdated)}` : "Updated date not posted"}</span>
+                            ${arbitrationDate ? `<span class="metadata-separator" aria-hidden="true">•</span><span>Arbitration ${escapeHtml(arbitrationDate)}</span>` : ""}
                         </div>
                     </article>
                 `;
