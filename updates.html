@@ -617,6 +617,332 @@
             }
         }
 
+        /* Modern visual refresh aligned with the rest of the Local 1650 site. */
+        :root {
+            --forest-green: #1e5a3a;
+            --forest-dark: #0b2818;
+            --gold-accent: #d4aa36;
+            --gold-light: #f1dfa3;
+            --off-white: #f4f7f3;
+            --gray-light: #dfe6e1;
+            --gray-text: #435047;
+            --surface: #ffffff;
+            --surface-muted: #eef3ef;
+            --shadow: 0 10px 30px rgba(11, 40, 24, 0.08);
+            --shadow-lg: 0 22px 60px rgba(11, 40, 24, 0.14);
+            --radius-md: 14px;
+            --radius-lg: 22px;
+        }
+
+        body {
+            background: var(--off-white);
+            color: var(--gray-text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .skip-link {
+            position: fixed;
+            z-index: 2000;
+            top: 10px;
+            left: 10px;
+            padding: 11px 16px;
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--forest-dark);
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-150%);
+            transition: transform 0.15s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        a:focus-visible,
+        .btn:focus-visible {
+            outline-color: #08733f;
+            outline-width: 3px;
+            outline-style: solid;
+            outline-offset: 4px;
+        }
+
+        header a:focus-visible,
+        footer a:focus-visible {
+            outline-color: var(--gold-light);
+        }
+
+        header {
+            padding: 10px 0;
+            background: rgba(11, 40, 24, 0.97);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 28px rgba(4, 24, 13, 0.18);
+            backdrop-filter: blur(16px);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            gap: 12px;
+        }
+
+        .logo-section {
+            gap: 12px;
+        }
+
+        .logo-image {
+            height: 46px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.24rem;
+            letter-spacing: -0.01em;
+        }
+
+        .logo-text p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.78rem;
+        }
+
+        header nav ul {
+            gap: 3px;
+        }
+
+        header nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 8px 10px;
+            border: 0;
+            border-radius: 9px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.86rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        header nav a:hover,
+        header nav a:focus-visible,
+        header nav a[aria-current="page"] {
+            border: 0;
+            background: rgba(255, 255, 255, 0.09);
+            color: var(--white);
+        }
+
+        header nav a[aria-current="page"] {
+            background: rgba(212, 170, 54, 0.16);
+            color: var(--gold-light);
+        }
+
+        section {
+            padding: clamp(72px, 8vw, 104px) 20px;
+        }
+
+        .section-container,
+        .footer-container {
+            max-width: 1160px;
+        }
+
+        .section-header {
+            margin-bottom: 42px;
+        }
+
+        .section-header h2,
+        .section-header h3 {
+            font-size: clamp(1.9rem, 4vw, 2.65rem);
+            letter-spacing: -0.025em;
+        }
+
+        .section-header h2::after,
+        .section-header h3::after {
+            width: 42px;
+            height: 4px;
+            bottom: -14px;
+            border-radius: 999px;
+        }
+
+        .page-hero {
+            padding: clamp(82px, 9vw, 116px) 20px;
+            background: linear-gradient(145deg, #071d11 0%, var(--forest-dark) 42%, #246544 100%);
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .page-hero::before {
+            background:
+                radial-gradient(circle at 18% 20%, rgba(212, 170, 54, 0.18), transparent 30%),
+                radial-gradient(circle at 82% 75%, rgba(255, 255, 255, 0.08), transparent 34%);
+            opacity: 1;
+        }
+
+        .hero-badge {
+            margin-bottom: 26px;
+            padding: 8px 16px;
+            border-color: rgba(241, 223, 163, 0.45);
+            background: rgba(241, 223, 163, 0.1);
+            color: #f7eabf;
+            font-size: 0.76rem;
+            letter-spacing: 0.14em;
+        }
+
+        .page-hero h2 {
+            margin-bottom: 22px;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+        }
+
+        .page-hero p {
+            max-width: 720px;
+            color: rgba(255, 255, 255, 0.74);
+        }
+
+        .notice-box {
+            margin-bottom: 30px;
+            padding: 24px 26px;
+            border: 1px solid var(--gray-light);
+            border-left: 3px solid var(--gold-accent);
+            border-radius: var(--radius-md);
+            background: #fffdf7;
+            box-shadow: none;
+        }
+
+        .updates-status {
+            border-color: var(--gray-light);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+        }
+
+        .updates-list {
+            gap: 22px;
+        }
+
+        .update-card {
+            padding: 32px;
+            border: 1px solid var(--gray-light);
+            border-top: 3px solid var(--gold-accent);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .update-card-header {
+            margin-bottom: 20px;
+        }
+
+        .update-eyebrow {
+            margin-bottom: 8px;
+            color: var(--forest-green);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+        }
+
+        .update-card h3 {
+            font-size: clamp(1.35rem, 3vw, 1.65rem);
+            letter-spacing: -0.02em;
+        }
+
+        .status-badge {
+            padding: 8px 13px;
+            border: 1px solid rgba(30, 90, 58, 0.14);
+            background: #e8f1eb;
+            color: var(--forest-dark);
+            font-size: 0.8rem;
+        }
+
+        .update-summary {
+            max-width: 78ch;
+            color: #526058;
+            line-height: 1.7;
+        }
+
+        .tracker {
+            margin: 30px 0 24px;
+        }
+
+        .timeline-step::after {
+            background: #dfe6e1;
+        }
+
+        .timeline-marker {
+            border-color: #c9d2cc;
+            color: #6a756e;
+        }
+
+        .timeline-step.is-completed::after {
+            background: rgba(30, 90, 58, 0.55);
+        }
+
+        .timeline-step.is-current .timeline-marker {
+            box-shadow: 0 0 0 5px rgba(212, 170, 54, 0.15);
+        }
+
+        .public-status-note {
+            padding: 18px 0;
+            color: #3e4b43;
+        }
+
+        .update-metadata {
+            padding-top: 14px;
+        }
+
+        footer {
+            padding-top: 64px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #071e11;
+        }
+
+        @media (hover: hover) {
+            .update-card {
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            }
+
+            .update-card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(30, 90, 58, 0.25);
+                border-top-color: var(--gold-accent);
+                box-shadow: var(--shadow-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                gap: 10px;
+            }
+
+            header nav {
+                width: calc(100% + 40px);
+                margin: 0 -20px -2px;
+                padding: 0 20px 4px;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            header nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            header nav ul {
+                min-width: max-content;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 3px;
+            }
+
+            .page-hero {
+                padding: 76px 20px 82px;
+            }
+
+            .update-card {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (forced-colors: active) {
+            .update-card,
+            .status-badge,
+            .timeline-marker {
+                border: 2px solid currentColor;
+            }
+        }
+
         /* Respect visitors who prefer reduced animation. */
         @media (prefers-reduced-motion: reduce) {
             html,
@@ -638,6 +964,7 @@
       Update the Google Apps Script URL near the top of the JavaScript at the end
       of this file. Tracker wording and stage rules are also clearly labeled there.
     -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="main-wrapper">
         <header>
             <div class="header-container">
@@ -651,6 +978,7 @@
                 <nav aria-label="Primary navigation">
                     <ul>
                         <li><a href="index.html#about">About</a></li>
+                        <li><a href="join-us.html">Join Us</a></li>
                         <li><a href="index.html#services">Services</a></li>
                         <li><a href="index.html#resources">Resources</a></li>
                         <li><a href="updates.html" aria-current="page">National Updates</a></li>
@@ -662,7 +990,7 @@
             </div>
         </header>
 
-        <main>
+        <main id="main-content" tabindex="-1">
             <section class="page-hero">
                 <div class="page-hero-content">
                     <span class="hero-badge">Council-Level Tracker</span>
@@ -705,6 +1033,7 @@
                             <li><a href="updates.html">National Updates</a></li>
                             <li><a href="index.html#tshirts">T-Shirts</a></li>
                             <li><a href="index.html#stewards">Steward Contacts</a></li>
+                            <li><a href="accessibility.html">Accessibility</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
@@ -780,8 +1109,8 @@
             arbitration_scheduling: { milestone: "arbitration", status: "Scheduling available", tone: "pending" },
             arbitration_scheduled: { milestone: "arbitration", status: "Scheduled", tone: "pending" },
             arbitration_decision_pending: { milestone: "arbitration", status: "Decision pending", tone: "pending" },
-            arbitration_approved: { milestone: "arbitration", status: "Complete", tone: "positive" },
-            arbitration_denied: { milestone: "arbitration", status: "Complete", tone: "negative" },
+            arbitration_approved: { milestone: "arbitration", status: "Result approved", tone: "positive" },
+            arbitration_denied: { milestone: "arbitration", status: "Result denied", tone: "negative" },
 
             appeal_filed: { milestone: "appeal", status: "Filed", tone: "pending" },
             appeal_pending: { milestone: "appeal", status: "Pending", tone: "pending" },
@@ -1007,23 +1336,11 @@
             };
         }
 
-        /* Historical arbitration labels must describe what happened, not an old scheduled date. */
+        /* Arbitration shows progress only; outcome details remain in the public note. */
         function getMilestoneStatus(item, state, definition, isCurrent) {
             if (definition.milestone !== "arbitration") return definition.status;
-
-            const storedResult = normalize(item.arbitration_result);
-            const hasActualResult = storedResult && !isPending(storedResult) && !lower(storedResult).includes("schedul");
-            if (hasActualResult && (!isCurrent || state === "arbitration_approved" || state === "arbitration_denied")) {
-                return storedResult;
-            }
-
-            if (isCurrent) return definition.status;
-
-            if (state === "arbitration_approved" || state === "arbitration_denied") {
-                return definition.status;
-            }
-
-            return "Completed";
+            const arbitrationHasConcluded = !isCurrent || state === "arbitration_approved" || state === "arbitration_denied";
+            return arbitrationHasConcluded ? "Complete" : "Pending";
         }
 
         function getTimelineEntries(item) {
@@ -1202,7 +1519,9 @@
                 const title = normalize(item.title) || "National grievance update";
                 const statusBadge = getStatusBadge(item);
                 const lastUpdated = formatDate(item.last_updated);
-                const arbitrationDate = formatDate(item.arbitration_date || item.arb_date);
+                const arbitrationDateRaw = normalize(item.arbitration_date || item.arb_date);
+                const arbitrationDate = formatDate(arbitrationDateRaw);
+                const arbitrationDateTime = /^\d{4}-\d{2}-\d{2}/.test(arbitrationDateRaw) ? arbitrationDateRaw.slice(0, 10) : "";
 
                 return `
                     <article class="update-card" aria-labelledby="update-title-${index}">
@@ -1221,7 +1540,7 @@
                         <p class="public-status-note"><strong>Current status:</strong> ${escapeHtml(item.public_note || "No public note is posted at this time.")}</p>
                         <div class="update-metadata" aria-label="Case dates">
                             <span>${lastUpdated ? `Updated ${escapeHtml(lastUpdated)}` : "Updated date not posted"}</span>
-                            ${arbitrationDate ? `<span class="metadata-separator" aria-hidden="true">•</span><span>Arbitration ${escapeHtml(arbitrationDate)}</span>` : ""}
+                            ${arbitrationDate ? `<span class="metadata-separator" aria-hidden="true">•</span><span><strong>Arbitration date:</strong> ${arbitrationDateTime ? `<time datetime="${escapeHtml(arbitrationDateTime)}">${escapeHtml(arbitrationDate)}</time>` : escapeHtml(arbitrationDate)}</span>` : ""}
                         </div>
                     </article>
                 `;
