@@ -218,6 +218,17 @@
             box-shadow: 0 6px 20px rgba(201, 162, 39, 0.5);
         }
 
+        /* Keep all hero actions aligned and equal in size. */
+        .hero-buttons .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 225px;
+            min-height: 56px;
+            padding: 14px 28px;
+            border: 2px solid transparent;
+        }
+
         .btn-secondary {
             background: transparent;
             color: var(--white);
@@ -855,6 +866,409 @@
             }
         }
 
+        /* Modern visual refresh: shared tokens, cleaner surfaces, and tighter navigation. */
+        :root {
+            --forest-green: #1e5a3a;
+            --forest-dark: #0b2818;
+            --gold-accent: #d4aa36;
+            --gold-light: #f1dfa3;
+            --off-white: #f4f7f3;
+            --gray-light: #dfe6e1;
+            --gray-text: #435047;
+            --surface: #ffffff;
+            --surface-muted: #eef3ef;
+            --shadow: 0 10px 30px rgba(11, 40, 24, 0.08);
+            --shadow-lg: 0 22px 60px rgba(11, 40, 24, 0.14);
+            --radius-md: 14px;
+            --radius-lg: 22px;
+        }
+
+        body {
+            background: #fbfcfa;
+            color: var(--gray-text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .skip-link {
+            position: fixed;
+            z-index: 2000;
+            top: 10px;
+            left: 10px;
+            padding: 11px 16px;
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--forest-dark);
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-150%);
+            transition: transform 0.15s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        a:focus-visible,
+        .btn:focus-visible {
+            outline-color: #08733f;
+            outline-width: 3px;
+            outline-style: solid;
+            outline-offset: 4px;
+        }
+
+        header a:focus-visible,
+        footer a:focus-visible {
+            outline-color: var(--gold-light);
+        }
+
+        main p a,
+        main li a,
+        .contact-item a {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.16em;
+        }
+
+        header {
+            padding: 10px 0;
+            background: rgba(11, 40, 24, 0.97);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 28px rgba(4, 24, 13, 0.18);
+            backdrop-filter: blur(16px);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            gap: 12px;
+        }
+
+        .logo-section {
+            gap: 12px;
+        }
+
+        .logo-image {
+            height: 46px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.24rem;
+            letter-spacing: -0.01em;
+        }
+
+        .logo-text p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.78rem;
+        }
+
+        header nav ul {
+            gap: 3px;
+        }
+
+        header nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 8px 10px;
+            border: 0;
+            border-radius: 9px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.86rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        header nav a:hover,
+        header nav a:focus-visible {
+            border: 0;
+            background: rgba(255, 255, 255, 0.09);
+            color: var(--white);
+        }
+
+        .hero {
+            padding: clamp(88px, 10vw, 128px) 20px;
+            background: linear-gradient(145deg, #071d11 0%, var(--forest-dark) 42%, #246544 100%);
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .hero::before {
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(212, 170, 54, 0.18), transparent 30%),
+                radial-gradient(circle at 82% 75%, rgba(255, 255, 255, 0.08), transparent 34%);
+            opacity: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: -220px;
+            top: -250px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 980px;
+        }
+
+        .hero-badge {
+            margin-bottom: 28px;
+            padding: 8px 16px;
+            border-color: rgba(241, 223, 163, 0.45);
+            background: rgba(241, 223, 163, 0.1);
+            color: #f7eabf;
+            font-size: 0.76rem;
+            letter-spacing: 0.14em;
+        }
+
+        .hero h2 {
+            max-width: 920px;
+            margin: 0 auto 24px;
+            font-size: clamp(2.4rem, 6vw, 4.35rem);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+        }
+
+        .hero-subheadline {
+            max-width: 720px;
+            margin-bottom: 38px;
+            color: rgba(255, 255, 255, 0.74);
+            font-size: clamp(1.04rem, 2vw, 1.2rem);
+        }
+
+        .hero-buttons,
+        .cta-buttons {
+            gap: 12px;
+        }
+
+        .btn {
+            border-radius: 10px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--gold-accent);
+            box-shadow: 0 10px 26px rgba(212, 170, 54, 0.26);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 14px 34px rgba(212, 170, 54, 0.34);
+        }
+
+        .btn-secondary {
+            border-color: rgba(255, 255, 255, 0.42);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: var(--white);
+        }
+
+        section {
+            padding: clamp(72px, 8vw, 104px) 20px;
+        }
+
+        .section-container,
+        .footer-container {
+            max-width: 1160px;
+        }
+
+        .section-header {
+            margin-bottom: 42px;
+        }
+
+        .section-header h3 {
+            font-size: clamp(1.9rem, 4vw, 2.65rem);
+            letter-spacing: -0.025em;
+        }
+
+        .section-header h3::after {
+            width: 42px;
+            height: 4px;
+            bottom: -14px;
+            border-radius: 999px;
+        }
+
+        .section-alt {
+            background: var(--off-white);
+        }
+
+        .about-content {
+            max-width: 860px;
+        }
+
+        .about-values {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .value-item {
+            padding: 24px 18px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .value-icon,
+        .resource-icon {
+            border-radius: 15px;
+        }
+
+        .service-card,
+        .resource-card,
+        .steward-card,
+        .feature-callout {
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .service-card {
+            padding: 28px;
+            border-left: 1px solid var(--gray-light);
+        }
+
+        .service-icon {
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(11, 40, 24, 0.14);
+        }
+
+        .resource-card {
+            padding: 32px 26px;
+        }
+
+        .feature-callout {
+            padding: 44px;
+        }
+
+        .national-updates-section {
+            border-top: 1px solid rgba(212, 170, 54, 0.4);
+            border-bottom: 0;
+            background: linear-gradient(145deg, #0a2517, #174a30 70%, #215d3e);
+        }
+
+        .national-updates-section .feature-callout {
+            border-color: rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .tshirts-section .feature-callout {
+            border-top: 3px solid var(--gold-accent);
+        }
+
+        .cta-section {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(212, 170, 54, 0.13), transparent 28%),
+                linear-gradient(145deg, #0a2517, #1e5a3a);
+        }
+
+        .steward-card {
+            padding: 28px;
+            border-top: 3px solid var(--gold-accent);
+        }
+
+        .steward-label {
+            background: rgba(212, 170, 54, 0.16);
+            color: #5f4708;
+        }
+
+        .steward-card .location,
+        .feature-kicker {
+            color: #1d5a3a;
+        }
+
+        .national-updates-section .feature-kicker {
+            color: var(--gold-light);
+        }
+
+        .steward-card .btn-secondary {
+            border-color: var(--forest-green);
+            background: var(--forest-green);
+        }
+
+        footer {
+            padding-top: 64px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #071e11;
+        }
+
+        @media (hover: hover) {
+            .service-card:hover,
+            .resource-card:hover,
+            .steward-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(30, 90, 58, 0.28);
+                box-shadow: var(--shadow-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                gap: 10px;
+            }
+
+            header nav {
+                width: calc(100% + 40px);
+                margin: 0 -20px -2px;
+                padding: 0 20px 4px;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            header nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            header nav ul {
+                min-width: max-content;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+
+            .hero {
+                padding: 76px 20px 82px;
+            }
+
+            .hero-buttons {
+                display: grid;
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .about-values {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-callout {
+                padding: 30px 22px;
+            }
+        }
+
+        @media (forced-colors: active) {
+            .btn,
+            .resource-card,
+            .service-card,
+            .steward-card {
+                border: 2px solid currentColor;
+            }
+        }
+
         /* Respect visitors who prefer reduced animation. */
         @media (prefers-reduced-motion: reduce) {
             html,
@@ -877,6 +1291,7 @@
       2. Keep every section id (for example, id="stewards") because menu links use it.
       3. Use SITE-EDITING-GUIDE.md for steward, tracker, image, and link instructions.
     -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="main-wrapper">
         <!-- Header -->
         <header>
@@ -891,6 +1306,7 @@
                 <nav aria-label="Primary navigation">
                     <ul>
                         <li><a href="#about">About</a></li>
+                        <li><a href="join-us.html">Join Us</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#resources">Resources</a></li>
                         <li><a href="updates.html">National Updates</a></li>
@@ -902,6 +1318,7 @@
             </div>
         </header>
 
+        <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
@@ -909,8 +1326,9 @@
                 <h2 id="hero-headline">Advocacy Across Every District. Accountability at Every Level.</h2>
                 <p class="hero-subheadline" id="hero-subheadline">Professional forest-level representation grounded in the Master Agreement, Forest Service directives, USDA regulations, and OPM policy.</p>
                 <div class="hero-buttons">
+                    <a href="join-us.html" class="btn btn-primary">Join Us</a>
                     <a href="https://calendar.app.google/bxukrgfCvzEjPfTP9" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Request Representation</a>
-                    <a href="https://forms.gle/YPdXpK2YFntYz1SA8" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Submit A Question</a>
+                    <a href="https://forms.gle/YPdXpK2YFntYz1SA8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Submit A Question</a>
                 </div>
             </div>
         </section>
@@ -927,15 +1345,15 @@
                     <p>We are committed to structured representation, clear communication, and policy-driven advocacy.</p>
                     <div class="about-values">
                         <div class="value-item">
-                            <div class="value-icon">⚖️</div>
+                            <div class="value-icon" aria-hidden="true">⚖️</div>
                             <h4>Structured Representation</h4>
                         </div>
                         <div class="value-item">
-                            <div class="value-icon">📋</div>
+                            <div class="value-icon" aria-hidden="true">📋</div>
                             <h4>Clear Communication</h4>
                         </div>
                         <div class="value-item">
-                            <div class="value-icon">📊</div>
+                            <div class="value-icon" aria-hidden="true">📊</div>
                             <h4>Policy-Driven Advocacy</h4>
                         </div>
                     </div>
@@ -951,42 +1369,42 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
-                        <div class="service-icon">🛡️</div>
+                        <div class="service-icon" aria-hidden="true">🛡️</div>
                         <div class="service-content">
                             <h4>Disciplinary & Investigatory Matters</h4>
                             <p>Representation in disciplinary and investigatory matters to protect your rights.</p>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">📝</div>
+                        <div class="service-icon" aria-hidden="true">📝</div>
                         <div class="service-content">
                             <h4>Grievance Guidance</h4>
                             <p>Grievance guidance and contract enforcement to ensure fair treatment.</p>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">⚙️</div>
+                        <div class="service-icon" aria-hidden="true">⚙️</div>
                         <div class="service-content">
                             <h4>Working Condition Disputes</h4>
                             <p>Resolution support for working condition disputes and workplace concerns.</p>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">📖</div>
+                        <div class="service-icon" aria-hidden="true">📖</div>
                         <div class="service-content">
                             <h4>Policy Interpretation</h4>
                             <p>Expert interpretation of policies, regulations, and contract provisions.</p>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">🧭</div>
+                        <div class="service-icon" aria-hidden="true">🧭</div>
                         <div class="service-content">
                             <h4>Management Action Assistance</h4>
                             <p>Assistance navigating management actions and administrative processes.</p>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">👥</div>
+                        <div class="service-icon" aria-hidden="true">👥</div>
                         <div class="service-content">
                             <h4>District Steward Support</h4>
                             <p>Steward support across all districts for accessible representation.</p>
@@ -1005,37 +1423,37 @@
                 <p class="resources-intro">These governing documents form the framework for representation and employee rights across Los Padres National Forest.</p>
                 <div class="resources-grid">
                     <a href="https://www.fs.usda.gov/sites/default/files/NFFE-FS-MasterAgreement-071624.pdf" target="_blank" rel="noopener noreferrer" class="resource-card">
-                        <div class="resource-icon">📄</div>
+                        <div class="resource-icon" aria-hidden="true">📄</div>
                         <h4>Master Agreement</h4>
                         <p>The collective bargaining agreement between NFFE and the Forest Service.</p>
                         <span class="resource-link">Access Document →</span>
                     </a>
                     <a href="https://www.fs.usda.gov/im/directives/" target="_blank" rel="noopener noreferrer" class="resource-card">
-                        <div class="resource-icon">📚</div>
+                        <div class="resource-icon" aria-hidden="true">📚</div>
                         <h4>Forest Service Directives</h4>
                         <p>FSM and FSH directives governing Forest Service operations.</p>
                         <span class="resource-link">Access Directives →</span>
                     </a>
                     <a href="https://www.usda.gov/directives/departmental-regulations" target="_blank" rel="noopener noreferrer" class="resource-card">
-                        <div class="resource-icon">🏛️</div>
+                        <div class="resource-icon" aria-hidden="true">🏛️</div>
                         <h4>USDA Departmental Regulations</h4>
                         <p>Department-wide regulations and policies from USDA.</p>
                         <span class="resource-link">Access Regulations →</span>
                     </a>
                     <a href="https://www.opm.gov/" target="_blank" rel="noopener noreferrer" class="resource-card">
-                        <div class="resource-icon">🇺🇸</div>
+                        <div class="resource-icon" aria-hidden="true">🇺🇸</div>
                         <h4>OPM Guidance</h4>
                         <p>Office of Personnel Management policies and guidance.</p>
                         <span class="resource-link">Access OPM →</span>
                     </a>
                     <a href="https://www.ecfr.gov" target="_blank" rel="noopener noreferrer" class="resource-card">
-                        <div class="resource-icon">⚖️</div>
+                        <div class="resource-icon" aria-hidden="true">⚖️</div>
                         <h4>Electronic Code of Federal Regulations</h4>
                         <p>Complete federal regulations and statutes in effect.</p>
                         <span class="resource-link">Access eCFR →</span>
                     </a>
                     <a href="https://www.nffe.org/" target="_blank" rel="noopener noreferrer" class="resource-card">
-                        <div class="resource-icon">🤝</div>
+                        <div class="resource-icon" aria-hidden="true">🤝</div>
                         <h4>NFFE National</h4>
                         <p>National Federation of Federal Employees union resources.</p>
                         <span class="resource-link">Visit NFFE →</span>
@@ -1113,10 +1531,10 @@
         <p class="location">Los Padres National Forest</p>
 
         <div class="contact-info">
-          <div class="contact-item"><span>📞</span><a href="tel:5303918119">(530) 391-8119</a></div>
+          <div class="contact-item"><span aria-hidden="true">📞</span><a href="tel:5303918119">(530) 391-8119</a></div>
 
-          <div class="contact-item"><span>✉️</span><a href="mailto:Ella.schultz@usda.gov">Ella.schultz@usda.gov</a></div>
-          <div class="contact-item"><span>📧</span><a href="mailto:ella.schultz.nffe@gmail.com">ella.schultz.nffe@gmail.com</a></div>
+          <div class="contact-item"><span aria-hidden="true">✉️</span><a href="mailto:Ella.schultz@usda.gov">Ella.schultz@usda.gov</a></div>
+          <div class="contact-item"><span aria-hidden="true">📧</span><a href="mailto:ella.schultz.nffe@gmail.com">ella.schultz.nffe@gmail.com</a></div>
         </div>
 
         <div class="profile-link">
@@ -1131,9 +1549,9 @@
         <p class="location">Communicator</p>
 
         <div class="contact-info">
-          <div class="contact-item"><span>📞</span><a href="tel:8057676663">(805) 767-6663</a></div>
-          <div class="contact-item"><span>✉️</span><a href="mailto:Maria.rosario@usda.gov">Maria.rosario@usda.gov</a></div>
-          <div class="contact-item"><span>📧</span><a href="mailto:unioncomms1650@gmail.com">unioncomms1650@gmail.com</a></div>
+          <div class="contact-item"><span aria-hidden="true">📞</span><a href="tel:8057676663">(805) 767-6663</a></div>
+          <div class="contact-item"><span aria-hidden="true">✉️</span><a href="mailto:Maria.rosario@usda.gov">Maria.rosario@usda.gov</a></div>
+          <div class="contact-item"><span aria-hidden="true">📧</span><a href="mailto:unioncomms1650@gmail.com">unioncomms1650@gmail.com</a></div>
         </div>
 
         <div class="profile-link">
@@ -1148,9 +1566,9 @@
         <p class="location">Santa Lucia Ranger District</p>
 
         <div class="contact-info">
-          <div class="contact-item"><span>📞</span><a href="tel:2092597086">(209) 259-7086</a></div>
-          <div class="contact-item"><span>✉️</span><a href="mailto:anthony.diaz@usda.gov">anthony.diaz@usda.gov</a></div>
-          <div class="contact-item"><span>📧</span><a href="mailto:anthony.diaz.nffe@gmail.com">anthony.diaz.nffe@gmail.com</a></div>
+          <div class="contact-item"><span aria-hidden="true">📞</span><a href="tel:2092597086">(209) 259-7086</a></div>
+          <div class="contact-item"><span aria-hidden="true">✉️</span><a href="mailto:anthony.diaz@usda.gov">anthony.diaz@usda.gov</a></div>
+          <div class="contact-item"><span aria-hidden="true">📧</span><a href="mailto:anthony.diaz.nffe@gmail.com">anthony.diaz.nffe@gmail.com</a></div>
         </div>
 
         <div class="profile-link">
@@ -1165,8 +1583,8 @@
         <p class="location">Ojai Ranger District</p>
 
         <div class="contact-info">
-          <div class="contact-item"><span>📞</span><a href="tel:8056669092">(805) 666-9092</a></div>
-          <div class="contact-item"><span>✉️</span><a href="mailto:Dagoberto.ojeda@usda.gov">Dagoberto.ojeda@usda.gov</a></div>
+          <div class="contact-item"><span aria-hidden="true">📞</span><a href="tel:8056669092">(805) 666-9092</a></div>
+          <div class="contact-item"><span aria-hidden="true">✉️</span><a href="mailto:Dagoberto.ojeda@usda.gov">Dagoberto.ojeda@usda.gov</a></div>
         </div>
 
         <div class="profile-link">
@@ -1181,8 +1599,8 @@
         <p class="location">Monterey Ranger District</p>
 
         <div class="contact-info">
-          <div class="contact-item"><span>📞</span><a href="tel:8318375160">(831) 837-5160</a></div>
-          <div class="contact-item"><span>✉️</span><a href="mailto:Jax.Clague@usda.gov">Jax.Clague@usda.gov</a></div>
+          <div class="contact-item"><span aria-hidden="true">📞</span><a href="tel:8318375160">(831) 837-5160</a></div>
+          <div class="contact-item"><span aria-hidden="true">✉️</span><a href="mailto:Jax.Clague@usda.gov">Jax.Clague@usda.gov</a></div>
         </div>
 
         <div class="profile-link">
@@ -1196,10 +1614,10 @@
         <p class="location">Local 1650</p>
 
         <div class="contact-info">
-          <div class="contact-item"><span>📞</span><a href="tel:5417860715">(541) 786-0715</a></div>
+          <div class="contact-item"><span aria-hidden="true">📞</span><a href="tel:5417860715">(541) 786-0715</a></div>
 
-          <div class="contact-item"><span>✉️</span><a href="mailto:jacob.kennedy@usda.gov">Jacob.kennedy@usda.gov</a></div>
-          <div class="contact-item"><span>📧</span><a href="mailto:jacobkennedynffe1650@gmail.com">jacobkennedynffe1650@gmail.com</a></div>
+          <div class="contact-item"><span aria-hidden="true">✉️</span><a href="mailto:jacob.kennedy@usda.gov">Jacob.kennedy@usda.gov</a></div>
+          <div class="contact-item"><span aria-hidden="true">📧</span><a href="mailto:jacobkennedynffe1650@gmail.com">jacobkennedynffe1650@gmail.com</a></div>
         </div>
 
         <div class="profile-link">
@@ -1210,6 +1628,7 @@
     </div>
   </div>
 </section>
+        </main>
         <!-- Footer -->
         <footer>
             <div class="footer-container">
@@ -1228,20 +1647,21 @@
                             <li><a href="updates.html">National Updates</a></li>
                             <li><a href="#tshirts">T-Shirts</a></li>
                             <li><a href="#stewards">Steward Contacts</a></li>
+                            <li><a href="accessibility.html">Accessibility</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4>Contact</h4>
                         <div class="footer-contact-item">
-                            <span>✉️</span>
+                            <span aria-hidden="true">✉️</span>
                             <a href="mailto:ella.schultz.nffe@gmail.com" id="footer-email">ella.schultz.nffe@gmail.com</a>
                         </div>
                         <div class="footer-contact-item">
-                            <span>📞</span>
+                            <span aria-hidden="true">📞</span>
                             <a href="tel:5303918119">(530) 391-8119</a>
                         </div>
                         <div class="footer-contact-item">
-                            <span>🌐</span>
+                            <span aria-hidden="true">🌐</span>
                             <a href="https://www.nffe.org/" target="_blank" rel="noopener noreferrer">NFFE National</a>
                         </div>
                     </div>
